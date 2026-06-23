@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulasi Model Ising 2D</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&display=swap');
+        
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: #fff0f3;
+            color: #4a4a4a;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+        .container {
+            max-width: 600px;
+            width: 100%;
+            background: #ffffff;
+            padding: 40px 30px;
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(255, 182, 193, 0.4);
+            text-align: center;
+            border: 2px solid #ffe3e8;
+        }
+        .header-badge {
+            background-color: #ffe3e8;
+            color: #ff6b8b;
+            padding: 6px 18px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 20px;
+            letter-spacing: 0.5px;
+        }
+        h1 {
+            color: #ff5c8a;
+            font-size: 28px;
+            margin: 0 0 8px 0;
+            font-weight: 700;
+        }
+        .author {
+            color: #a3a3a3;
+            font-size: 15px;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+        .description {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #6c757d;
+            margin-bottom: 35px;
+            padding: 0 10px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0 0 30px 0;
+        }
+        li {
+            margin-bottom: 16px;
+        }
+        .card-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #fff8f9;
+            padding: 18px 24px;
+            border-radius: 16px;
+            text-decoration: none;
+            color: #555555;
+            font-weight: 600;
+            font-size: 15px;
+            border: 1px solid #ffe3e8;
+            transition: all 0.3s ease;
+        }
+        .card-link:hover {
+            transform: translateY(-3px);
+            background: #ffecf0;
+            border-color: #ffb6c1;
+            box-shadow: 0 8px 20px rgba(255, 182, 193, 0.3);
+            color: #ff5c8a;
+        }
+        .icon-wrapper {
+            font-size: 20px;
+            margin-right: 15px;
+        }
+        .link-text {
+            flex-grow: 1;
+            text-align: left;
+        }
+        .arrow {
+            color: #ffb6c1;
+            font-size: 16px;
+            transition: transform 0.3s ease;
+        }
+        .card-link:hover .arrow {
+            transform: translateX(5px);
+            color: #ff5c8a;
+        }
+        .ai-declaration {
+            background-color: #fff0f3;
+            padding: 15px;
+            border-radius: 12px;
+            font-size: 13px;
+            color: #ff6b8b;
+            text-align: left;
+            border: 1px dashed #ffb6c1;
+            margin-bottom: 20px;
+        }
+        .ai-title {
+            font-weight: 700;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .footer {
+            margin-top: 20px;
+            font-size: 12px;
+            color: #ffb6c1;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <span class="header-badge">FISIKA KOMPUTASI CASE-BASED 2</span>
+        <h1>Simulasi Model Ising 2D</h1>
+        <div class="author">🎀Angelika_01241001🎀</div>
+        
+        <p class="description">
+            Halo! Halaman ini memuat hasil kompilasi simulasi fisik komputasi Model Ising 2 Dimensi menggunakan <strong>Algoritma Metropolis Monte Carlo</strong> untuk menganalisis perilaku transisi fase magnetik.
+        </p>
+        
+        <ul>
+            <li>
+                <a class="card-link" href="Kasus_1_Fase_Feromagnetik_(T_=_1_0).html">
+                    <span class="icon-wrapper">🔥</span>
+                    <span class="link-text">Kasus 1: Fase Feromagnetik (T = 1.0)</span>
+                    <span class="arrow">➔</span>
+                </a>
+            </li>
+            <li>
+                <a class="card-link" href="Kasus_2_Transisi_Fasa_&_Kritikalitas_(T_=_2_27).html">
+                    <span class="icon-wrapper">🔥🔥</span>
+                    <span class="link-text">Kasus 2: Transisi Fasa & Kritikalitas (T = 2.27)</span>
+                    <span class="arrow">➔</span>
+                </a>
+            </li>
+            <li>
+                <a class="card-link" href="Kasus_3_Fase_Paramagnetik_(T_=_4_0).html">
+                    <span class="icon-wrapper">🔥🔥🔥</span>
+                    <span class="link-text">Kasus 3: Fase Paramagnetik (T = 4.0)</span>
+                    <span class="arrow">➔</span>
+                </a>
+            </li>
+        </ul>
+
+        <div class="ai-declaration">
+            <div class="ai-title">Penggunaan AI</div>
+            Pada pengerjaan case-based ini, saya menggunakan Gemini PRO 3.1 untuk menyusun kerangka sintaksis algoritma Metropolis pada kode simulasi Python, mengoptimalkan format UI/UX untuk halaman web HTML, serta membantu merapikan susunan paragraf analisis fisis.
+        </div>
+        
+        <div class="footer">Dibuat dengan 💕 untuk Tugas Transisi Fase</div>
+    </div>
+</body>
+</html>
