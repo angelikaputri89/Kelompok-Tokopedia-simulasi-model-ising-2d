@@ -25,4 +25,4 @@ Program Python dalam proyek ini mengedepankan efisiensi komputasi dengan spesifi
 Visualisasi keadaan akhir kisi spin (peta warna biner) dan kurva riwayat magnetisasi untuk ketiga kasus dapat diakses melalui GitHub Pages dari branch main yang bersumber dari direktori `/docs`.
 
 ## Deklarasi Penggunaan AI
-Pada pengerjaan case-based ini, saya menggunakan Gemini PRO 3.1 untuk menyusun kerangka sintaksis algoritma Metropolis pada kode simulasi Python, mengoptimalkan format UI/UX untuk halaman web HTML, serta membantu merapikan susunan paragraf analisis fisis.
+Pada pengerjaan case-based ini, kami menggunakan Gemini PRO 3.1 untuk menyusun kerangka sintaksis algoritma Metropolis pada kode simulasi Python, mengoptimalkan format UI/UX untuk halaman web HTML, serta membantu merapikan susunan paragraf analisis fisis.
