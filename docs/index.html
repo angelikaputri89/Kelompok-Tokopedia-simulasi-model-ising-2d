@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simulasi Model Ising 2D</title>
     <style>
-        import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&display=swap');
         
         body {
             font-family: 'Quicksand', sans-serif;
@@ -46,10 +46,13 @@
             margin: 0 0 8px 0;
             font-weight: 700;
         }
+        .author-box {
+            margin-bottom: 30px;
+        }
         .author {
             color: #a3a3a3;
             font-size: 15px;
-            margin-bottom: 30px;
+            margin: 4px 0;
             font-weight: 600;
         }
         .description {
@@ -59,12 +62,14 @@
             margin-bottom: 35px;
             padding: 0 10px;
         }
-        ul {
+        
+        /* Tombol Link Kasus */
+        .kasus-list {
             list-style-type: none;
             padding: 0;
-            margin: 0 0 30px 0;
+            margin: 0 0 35px 0;
         }
-        li {
+        .kasus-list li {
             margin-bottom: 16px;
         }
         .card-link {
@@ -91,6 +96,8 @@
         .icon-wrapper {
             font-size: 20px;
             margin-right: 15px;
+            display: flex;
+            align-items: center;
         }
         .link-text {
             flex-grow: 1;
@@ -101,29 +108,44 @@
             font-size: 16px;
             transition: transform 0.3s ease;
         }
+        .arrow::after {
+            content: '→';
+        }
         .card-link:hover .arrow {
             transform: translateX(5px);
             color: #ff5c8a;
         }
-        .ai-declaration {
+
+        /* Desain Kotak Informasi (AI, Referensi, Aplikasi) */
+        .info-box {
             background-color: #fff0f3;
-            padding: 15px;
+            padding: 18px 20px;
             border-radius: 12px;
-            font-size: 13px;
+            font-size: 13.5px;
             color: #ff6b8b;
             text-align: left;
             border: 1px dashed #ffb6c1;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
+            line-height: 1.6;
         }
-        .ai-title {
+        .info-title {
             font-weight: 700;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
             display: flex;
             align-items: center;
-            gap: 5px;
+            gap: 6px;
+            font-size: 14.5px;
         }
+        .info-box ul, .info-box ol {
+            margin: 5px 0 0 0;
+            padding-left: 20px;
+        }
+        .info-box li {
+            margin-bottom: 6px;
+        }
+        
         .footer {
-            margin-top: 20px;
+            margin-top: 30px;
             font-size: 12px;
             color: #ffb6c1;
             font-weight: 500;
@@ -134,42 +156,64 @@
     <div class="container">
         <span class="header-badge">FISIKA KOMPUTASI CASE-BASED 2</span>
         <h1>Simulasi Model Ising 2D</h1>
-        <div class="author">Angelika Putri_01241001</div>
-        <div class="author">Fitri Aulia Waode_01241004</div>
-        <div class="author">Tina Sarmila_01241023</div>
+        
+        <div class="author-box">
+            <div class="author">Angelika Putri (01241001)</div>
+            <div class="author">Fitri Aulia Waode (01241004)</div>
+            <div class="author">Tina Sarmila (01241023)</div>
+        </div>
         
         <p class="description">
-            Halaman ini memuat hasil kompilasi simulasi fisik komputasi Model Ising 2 Dimensi menggunakan <strong>Algoritma Metropolis Monte Carlo</strong> untuk menganalisis perilaku transisi fase magnetik.
+            Halaman ini memuat hasil kompilasi simulasi fisika komputasi Model Ising 2 Dimensi menggunakan <strong>Algoritma Metropolis Monte Carlo</strong> untuk menganalisis perilaku transisi fase magnetik.
         </p>
         
-        <ul>
+        <ul class="kasus-list">
             <li>
                 <a class="card-link" href="Kasus_1_Fase_Feromagnetik_(T_=_1_0).html">
-                    <span class="icon-wrapper"></span>
+                    <span class="icon-wrapper">🧲</span>
                     <span class="link-text">Kasus 1: Fase Feromagnetik (T = 1.0)</span>
                     <span class="arrow"></span>
                 </a>
             </li>
             <li>
                 <a class="card-link" href="Kasus_2_Transisi_Fasa_&_Kritikalitas_(T_=_2_27).html">
-                    <span class="icon-wrapper"></span>
+                    <span class="icon-wrapper">🌀</span>
                     <span class="link-text">Kasus 2: Transisi Fasa & Kritikalitas (T = 2.27)</span>
                     <span class="arrow"></span>
                 </a>
             </li>
             <li>
                 <a class="card-link" href="Kasus_3_Fase_Paramagnetik_(T_=_4_0).html">
-                    <span class="icon-wrapper"></span>
+                    <span class="icon-wrapper">🌡️</span>
                     <span class="link-text">Kasus 3: Fase Paramagnetik (T = 4.0)</span>
                     <span class="arrow"></span>
                 </a>
             </li>
         </ul>
 
-        <div class="ai-declaration">
-            <div class="ai-title">Penggunaan AI</div>
+        <div class="info-box">
+            <div class="info-title">📚 Referensi dan Sumber Data</div>
+            <ul>
+                <li>Landau, D. P., dkk. <em>A Guide to Monte Carlo Simulations in Statistical Physics</em> (Bab 17.2: Aturan Implementasi).</li>
+                <li>Rifani, Agus. <em>Modul Pembelajaran: Simulasi Model Magnet dan Transisi Fasa</em>.</li>
+            </ul>
+        </div>
+
+        <div class="info-box">
+            <div class="info-title">💻 Penggunaan Aplikasi Lain</div>
+            <ol>
+                <li><strong>Jupyter Software</strong> untuk menyediakan lingkungan eksekusi kode secara interaktif, penulisan analisis berbasis teks formal, dan penampilan visualisasi kurva magnetisasi secara inline.</li>
+                <li><strong>Visual Studio Code (VS Code)</strong> digunakan sebagai editor kode utama untuk menyusun, mengedit, dan merapikan struktur sintaks HTML dan CSS halaman web ini dengan lebih efisien.</li>
+                <li><strong>Google Colab</strong> dimanfaatkan sebagai platform komputasi berbasis <em>cloud</em> untuk menguji dan mengeksekusi algoritma simulasi Python secara cepat tanpa membebani kinerja memori perangkat lokal.</li>
+            </ol>
+        </div>
+
+        <div class="info-box">
+            <div class="info-title">✨ Penggunaan AI</div>
             Pada pengerjaan case-based ini, kami menggunakan Gemini PRO 3.1 untuk menyusun kerangka sintaksis algoritma Metropolis pada kode simulasi Python, mengoptimalkan format UI/UX untuk halaman web HTML, serta membantu merapikan susunan paragraf analisis fisis.
         </div>
+        
+        <div class="footer">© 2026 Proyek Fisika Komputasi</div>
     </div>
 </body>
 </html>
