@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kasus 2: Transisi Fase Kritis (T = 2.27)</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght=500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&display=swap');
         
         body {
             font-family: 'Quicksand', sans-serif;
@@ -36,6 +36,7 @@
             font-size: 14px;
             margin-bottom: 25px;
             transition: transform 0.2s;
+            font-family: 'Quicksand', sans-serif;
         }
         .back-btn:hover {
             transform: translateX(-5px);
@@ -49,6 +50,7 @@
             font-weight: 700;
             display: inline-block;
             margin-bottom: 15px;
+            font-family: 'Quicksand', sans-serif;
         }
         h1 {
             color: #ff5c8a;
@@ -57,6 +59,7 @@
             font-weight: 700;
             border-bottom: 2px dashed #ffe3e8;
             padding-bottom: 15px;
+            font-family: 'Quicksand', sans-serif;
         }
         
         .section {
@@ -71,6 +74,7 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            font-family: 'Quicksand', sans-serif;
         }
         .section p {
             font-size: 15px;
@@ -78,6 +82,7 @@
             color: #555555;
             text-align: justify;
             margin-bottom: 15px;
+            font-family: 'Quicksand', sans-serif; /* Dikunci agar tetap gemoy */
         }
         
         .styled-list {
@@ -89,6 +94,7 @@
             font-size: 15px;
             line-height: 1.6;
             color: #555555;
+            font-family: 'Quicksand', sans-serif; /* Dikunci agar tetap gemoy */
         }
 
         /* Penataan Baris Kode Agar Rapi Turun ke Bawah */
@@ -129,6 +135,7 @@
             margin-bottom: 10px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            font-family: 'Quicksand', sans-serif;
         }
         
         .footer {
@@ -139,6 +146,7 @@
             font-weight: 500;
             border-top: 1px solid #ffe3e8;
             padding-top: 20px;
+            font-family: 'Quicksand', sans-serif;
         }
     </style>
 </head>
@@ -152,10 +160,10 @@
         <div class="section">
             <h2>🧲 1. Konteks Fisis</h2>
             <p>
-                Pada Kasus 2, sistem dikondisikan berada pada temperatur <b>T = 2.27</b>. Nilai temperatur ini dipilih karena berada sangat dekat dengan nilai batas ambang kritis teoritis untuk Model Ising 2 Dimensi pada kisi persegi panjang vôhingga, yaitu Temperatur Kritis Onsager (<b>Tc sekitar 2.269</b>). Kondisi ini dinamakan daerah kritis atau area transisi fase kontinu.
+                Pada Kasus 2, sistem dikondisikan berada pada temperatur <b>T = 2.27</b>. Nilai temperatur ini dipilih karena berada sangat dekat dengan nilai batas ambang kritis teoritis untuk Model Ising 2 Dimensi pada kisi persegi panjang tak hingga, yaitu Temperatur Kritis Onsager (<b>Tc sekitar 2.269</b>). Kondisi ini dinamakan daerah kritis atau area transisi fase kontinu.
             </p>
             <p>
-                Pada titik temperatur kritis ini, terjadi persaingan sengit berskala makroskopis antara gaya keteraturan magnetik internal (kopling pertukaran pertukaran, J) yang berusaha menjajajarkan spin, dengan gaya acak fluktuasi termal (entropi) yang berusaha mengacak orientasi spin. Akibatnya, sistem berada pada kondisi ambang batas yang labil antara Fase Feromagnetik (teratur) menuju Fase Paramagnetik (acak total).
+                Pada titik temperatur kritis ini, terjadi persaingan sengit berskala makroskopis antara gaya keteraturan magnetik internal (kopling pertukaran, J) yang berusaha menjajajarkan spin, dengan gaya acak fluktuasi termal (entropi) yang berusaha mengacak orientasi spin. Akibatnya, sistem berada pada kondisi ambang batas yang labil antara Fase Feromagnetik (teratur) menuju Fase Paramagnetik (acak total).
             </p>
         </div>
 
@@ -165,9 +173,8 @@
                 Berdasarkan teori mekanika statistik grup renormalisasi, sistem yang berada tepat pada temperatur kritis (T dekat dengan Tc) akan memunculkan perilaku fisik yang sangat unik:
             </p>
             
-            <div style="text-align: center; margin: 25px 0; font-family: 'Times New Roman', Times, serif; font-size: 20px; font-weight: bold; color: #ff5c8a; background: #fff0f3; padding: 15px; border-radius: 12px;">
+            <div style="text-align: center; margin: 25px 0; font-family: 'Quicksand', sans-serif; font-size: 20px; font-weight: bold; color: #ff5c8a; background: #fff0f3; padding: 15px; border-radius: 12px;">
                 T &asymp; T<sub>c</sub> &rArr; M(T) &rarr; 0, Besaran Fluktuasi &rarr; &infin;
-            </p>
             </div>
             
             <p>
@@ -188,7 +195,7 @@
                 Sistem dimulai dengan skenario <strong>Hot Start Initialization</strong> (acak total). Pada bagian visualisasi akhir, skrip komputasi menggunakan metode *Penyelarasan Simetri* (Symmetry Adjustment), di mana jika nilai akhir magnetisasi bernilai negatif, maka visualisasi grafik dan warna matriks grid akan dibalik tandanya secara matematika untuk mempermudah analisis visual tatanan fase.
             </p>
 
-            <h3 style="color: #ff6b8b; font-size: 15px; margin-bottom: 5px;">Sintaks Kode Python:</h3>
+            <h3 style="color: #ff6b8b; font-size: 15px; margin-bottom: 5px; font-family: 'Quicksand', sans-serif;">Sintaks Kode Python:</h3>
 <pre>
 import numpy as np
 import matplotlib.pyplot as plt
@@ -197,7 +204,7 @@ import matplotlib.pyplot as plt
 # 1. PARAMETER SISTEM & INISIALISASI (Memenuhi Aspek Akurasi Fisis)
 # =========================================================================
 N = 20                # Ukuran kisi dua dimensi (20x20)
-MCS = 200000          # Total iterasi / langkah Monte Carlo
+MCS = 200000          # Total langkah Monte Carlo
 T = 2.27              # Suhu sistem (Suhu Kritis Tc ≈ 2.269)
 
 # Inisialisasi Hot Start: Konfigurasi spin acak (+1 atau -1) untuk entropi maksimum
@@ -274,13 +281,13 @@ plt.show()
         <div class="section">
             <h2>🗣️ 4. Diskusi dan Interpretasi Fisis</h2>
             <p>
-                Grafik keluaran pada temperatur kritis <b>T = 2.27</b> menampilkan potret fisis yang sangat kontras jika dibandingkan dengan kondisi suhu rendah kemarin. Pada kurva riwayat magnetisasi (`Magnetization Curve`), kita tidak akan melihat garis lurus asimtot yang tenang. Sebaliknya, kurva memperlihatkan fluktuasi turbulensi masif beramplitudo tinggi sepanjang jalannya iterasi komputasi Monte Carlo.
+                Grafik keluaran pada temperatur kritis <b>T = 2.27</b> menampilkan potret fisis yang sangat kontras jika dibandingkan dengan kondisi suhu rendah kemarin. Pada kurva riwayat magnetisasi (<i>Magnetization Curve</i>), kita tidak akan melihat garis lurus asimtot yang tenang. Sebaliknya, kurva memperlihatkan fluktuasi turbulensi masif beramplitudo tinggi sepanjang jalannya iterasi komputasi Monte Carlo.
             </p>
             <p>
                 Fenomena ini merupakan indikasi nyata dari peristiwa <strong>Critical Opalescence</strong> berskala mikroskopis. Akibat nilai panjang korelasi sistem yang menuju takhingga, sistem terus-menerus mengalami pergolakan konstan; gugusan domain magnetik berukuran besar terbentuk lalu hancur kembali dalam hitungan langkah komputasi yang singkat karena energi termal acak setara kuatnya dengan gaya ikat kopling spin.
             </p>
             <p>
-                Hal ini divalidasi secara visual melalui grafik keadaan matriks kisi (`Final State`). Kisi tidak lagi bersih satu warna solid, melainkan membentuk pola fraktal pulau-pulau gugusan spin (klaster hitam dan putih) yang saling menginvasi satu sama lain secara acak teratur. Kemunculan struktur klaster multi-skala ini menegaskan bahwa pada suhu kritis T = 2.27, sistem Model Ising berhasil menangkap perilaku esensial dari fenomena transisi fase kontinu secara akurat.
+                Hal ini divalidasi secara visual melalui grafik keadaan matriks kisi (<i>Final State</i>). Kisi tidak lagi bersih satu warna solid, melainkan membentuk pola fraktal pulau-pulau gugusan spin (klaster hitam dan putih) yang saling menginvasi satu sama lain secara acak teratur. Kemunculan struktur klaster multi-skala ini menegaskan bahwa pada suhu kritis T = 2.27, sistem Model Ising berhasil menangkap perilaku esensial dari fenomena transisi fase kontinu secara akurat.
             </p>
         </div>
         
