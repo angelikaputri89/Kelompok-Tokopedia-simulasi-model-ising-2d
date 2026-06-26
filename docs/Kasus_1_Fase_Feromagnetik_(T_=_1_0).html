@@ -91,54 +91,44 @@
             color: #555555;
         }
 
-        /* Tampilan Blok Kode Python yang Rapi */
-        .code-container {
+        /* Perbaikan Tampilan Blok Kode: Menggunakan elemen Pre agar rapi turun ke bawah */
+        pre {
             background: #282c34;
             color: #abb2bf;
-            padding: 22px;
+            padding: 20px;
             border-radius: 14px;
             font-family: 'Fira Code', 'Courier New', Courier, monospace;
-            font-size: 13.5px;
-            line-height: 1.6;
+            font-size: 13px;
+            line-height: 1.5;
             overflow-x: auto;
             text-align: left;
             margin: 20px 0;
-            box-shadow: inset 0 2px 8px rgba(0,0,0,0.3);
             border-left: 5px solid #ff6b8b;
+            white-space: pre; /* Memaksa penataan baris sesuai teks asli */
         }
-        .code-comment { color: #5c6370; font-style: italic; }
-        .code-keyword { color: #c678dd; font-weight: bold; }
-        .code-number { color: #d19a66; }
-        .code-string { color: #98c379; }
-        .code-func { color: #61afef; }
 
-        /* Tampilan Grafik Output */
-        .output-container {
+        /* Perbaikan Tempat Grafik Gambar */
+        .image-box {
             background: #ffffff;
             border: 2px solid #ffe3e8;
             border-radius: 16px;
-            padding: 20px;
+            padding: 15px;
             text-align: center;
             margin: 25px 0;
             box-shadow: 0 4px 15px rgba(255, 182, 193, 0.15);
         }
-        .output-title {
-            font-size: 14px;
-            color: #ff6b8b;
-            font-weight: 700;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-        }
-        .output-image {
+        .image-box img {
             max-width: 100%;
             height: auto;
-            border-radius: 10px;
-            border: 1px solid #ffe3e8;
+            border-radius: 8px;
+        }
+        .image-box-title {
+            font-size: 13px;
+            color: #ff6b8b;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
         
         .footer {
@@ -152,7 +142,7 @@
         }
     </style>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/dist/share/統合.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/dist/browser.js"></script>
 </head>
 <body>
     <div class="container">
@@ -198,72 +188,73 @@
             </p>
 
             <h3 style="color: #ff6b8b; font-size: 15px; margin-bottom: 5px;">Sintaks Kode Python:</h3>
-            <div class="code-container">
-<span class="code-keyword">import</span> numpy <span class="code-keyword">as</span> np
-<span class="code-keyword">import</span> matplotlib.pyplot <span class="code-keyword">as</span> plt
+<pre>
+import numpy as np
+import matplotlib.pyplot as plt
 
-<span class="code-comment"># ==========================================</span>
-<span class="code-comment"># 1. PARAMETER SISTEM</span>
-<span class="code-comment"># ==========================================</span>
-N = <span class="code-number">20</span>                <span class="code-comment"># Ukuran kisi 20x20</span>
-MCS = <span class="code-number">200000</span>          <span class="code-comment"># Total langkah Monte Carlo</span>
-T = <span class="code-number">1.0</span>               <span class="code-comment"># SUHU SISTEM</span>
+# ==========================================
+# 1. PARAMETER SISTEM
+# ==========================================
+N = 20                # Ukuran kisi 20x20
+MCS = 200000          # Total langkah Monte Carlo
+T = 1.0               # SUHU SISTEM
 
-<span class="code-comment"># Inisialisasi Hot Start (Spin acak -1 atau 1)</span>
-grid = np.random.<span class="code-func">choice</span>([-<span class="code-number">1</span>, <span class="code-number">1</span>], size=(N, N))
-mag_history = []      <span class="code-comment"># Array nilai magnetisasi</span>
+# Inisialisasi Hot Start (Spin acak -1 atau 1)
+grid = np.random.choice([-1, 1], size=(N, N))
+mag_history = []      # Array nilai magnetisasi
 
-<span class="code-comment"># ==========================================</span>
-<span class="code-comment"># 2. ALGORITMA METROPOLIS</span>
-<span class="code-comment"># ==========================================</span>
-<span class="code-keyword">for</span> step <span class="code-keyword">in</span> <span class="code-keyword">range</span>(MCS):
-    i = np.random.<span class="code-func">randint</span>(<span class="code-number">0</span>, N)
-    j = np.random.<span class="code-func">randint</span>(<span class="code-number">0</span>, N)
+# ==========================================
+# 2. ALGORITMA METROPOLIS
+# ==========================================
+for step in range(MCS):
+    i = np.random.randint(0, N)
+    j = np.random.randint(0, N)
     s = grid[i, j]
 
-    <span class="code-comment"># Kondisi Batas Periodik (Modulo %N)</span>
-    tetangga = grid[(i+<span class="code-number">1</span>)%N, j] + grid[(i-<span class="code-number">1</span>)%N, j] + grid[i, (j+<span class="code-number">1</span>)%N] + grid[i, (j-<span class="code-number">1</span>)%N]
-    delta_E = <span class="code-number">2</span> * s * tetangga
+    # Kondisi Batas Periodik (Modulo %N)
+    tetangga = grid[(i+1)%N, j] + grid[(i-1)%N, j] + grid[i, (j+1)%N] + grid[i, (j-1)%N]
+    delta_E = 2 * s * tetangga
 
-    <span class="code-comment"># Kriteria penerimaan Metropolis</span>
-    <span class="code-keyword">if</span> delta_E &lt; <span class="code-number">0</span>:
-        s *= -<span class="code-number">1</span> 
-    <span class="code-keyword">elif</span> np.random.<span class="code-func">rand</span>() &lt; np.<span class="code-func">exp</span>(-delta_E / T):
-        s *= -<span class="code-number">1</span> 
+    # Kriteria penerimaan Metropolis
+    if delta_E &lt; 0:
+        s *= -1 
+    elif np.random.rand() &lt; np.exp(-delta_E / T):
+        s *= -1 
 
     grid[i, j] = s 
 
-    <span class="code-comment"># Catat rata-rata magnetisasi setiap 100 langkah</span>
-    <span class="code-keyword">if</span> step % <span class="code-number">100</span> == <span class="code-number">0</span>:
-        mag_history.<span class="code-func">append</span>(np.<span class="code-func">sum</span>(grid) / (N**<span class="code-number">2</span>))
+    # Catat rata-rata magnetisasi setiap 100 langkah
+    if step % 100 == 0:
+        mag_history.append(np.sum(grid) / (N**2))
 
-<span class="code-comment"># ==========================================</span>
-<span class="code-comment"># 3. VISUALISASI HASIL</span>
-<span class="code-comment"># ==========================================</span>
-fig, axes = plt.<span class="code-func">subplots</span>(<span class="code-number">1</span>, <span class="code-number">2</span>, figsize=(<span class="code-number">12</span>, <span class="code-number">5</span>))
+# ==========================================
+# 3. VISUALISASI HASIL
+# ==========================================
+fig, axes = plt.subplots(1, 2, figsize=(12, 5))
 
-<span class="code-comment"># Plot 1: Keadaan Akhir Kisi</span>
-axes[<span class="code-number">0</span>].<span class="code-func">imshow</span>(grid, cmap=<span class="code-string">'binary'</span>, vmin=-<span class="code-number">1</span>, vmax=<span class="code-number">1</span>)
-axes[<span class="code-number">0</span>].<span class="code-func">set_title</span>(<span class="code-string">f"Final State at T = {T:.2f}"</span>)
-axes[<span class="code-number">0</span>].<span class="code-func">set_xticks</span>([])
-axes[<span class="code-number">0</span>].<span class="code-func">set_yticks</span>([])
-<span class="code-keyword">for</span> spine <span class="code-keyword">in</span> axes[<span class="code-number">0</span>].spines.<span class="code-func">values</span>():
-    spine.<span class="code-func">set_edgecolor</span>(<span class="code-string">'black'</span>)
-    spine.<span class="code-func">set_linewidth</span>(<span class="code-number">2</span>)
+# Plot 1: Keadaan Akhir Kisi
+axes[0].imshow(grid, cmap='binary', vmin=-1, vmax=1)
+axes[0].set_title(f"Final State at T = {T:.2f}")
+axes[0].set_xticks([])
+axes[0].set_yticks([])
+for spine in axes[0].spines.values():
+    spine.set_edgecolor('black')
+    spine.set_linewidth(2)
 
-<span class="code-comment"># Plot 2: Riwayat Magnetisasi</span>
-axes[<span class="code-number">1</span>].<span class="code-func">plot</span>(<span class="code-keyword">range</span>(<span class="code-keyword">len</span>(mag_history)), mag_history, color=<span class="code-string">'tab:blue'</span>, linewidth=<span class="code-number">1.5</span>)
-axes[<span class="code-number">1</span>].<span class="code-func">set_title</span>(<span class="code-string">f"Magnetization at T = {T:.2f}"</span>)
-axes[<span class="code-number">1</span>].<span class="code-func">set_xlabel</span>(<span class="code-string">"Monte Carlo Steps (x100)"</span>)
-axes[<span class="code-number">1</span>].<span class="code-func">set_ylabel</span>(<span class="code-string">"Average Magnetization"</span>)
-axes[<span class="code-number">1</span>].<span class="code-func">set_ylim</span>(-<span class="code-number">1.1</span>, <span class="code-number">1.1</span>)
+# Plot 2: Riwayat Magnetisasi
+axes[1].plot(range(len(mag_history)), mag_history, color='tab:blue', linewidth=1.5)
+axes[1].set_title(f"Magnetization at T = {T:.2f}")
+axes[1].set_xlabel("Monte Carlo Steps (x100)")
+axes[1].set_ylabel("Average Magnetization")
+axes[1].set_ylim(-1.1, 1.1)
 
-plt.<span class="code-func">tight_layout</span>()
-plt.<span class="code-func">show</span>()</div>
+plt.tight_layout()
+plt.show()
+</pre>
             
-            <div class="output-container">
-                <div class="output-title">📈 Hasil Visualisasi Output Komputasi</div>
-                <img src="output_kasus1.png" alt="Grafik Output Simulasi Model Ising T=1.0" class="output-image">
+            <div class="image-box">
+                <div class="image-box-title">📈 Hasil Visualisasi Grafik Komputasi</div>
+                <img src="output_kasus1.png" alt="Grafik Output Kasus 1">
             </div>
         </div>
 
