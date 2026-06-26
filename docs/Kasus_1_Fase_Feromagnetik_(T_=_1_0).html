@@ -200,4 +200,78 @@ MCS = 200000          # Total langkah Monte Carlo
 T = 1.0               # SUHU SISTEM
 
 # Inisialisasi Hot Start (Spin acak -1 atau 1)
-grid = np.random.choice([-1, 1], size=(
+grid = np.random.choice([-1, 1], size=(N, N))
+mag_history = []      # Array nilai magnetisasi
+
+# ==========================================
+# 2. ALGORITMA METROPOLIS
+# ==========================================
+for step in range(MCS):
+    i = np.random.randint(0, N)
+    j = np.random.randint(0, N)
+    s = grid[i, j]
+
+    # Kondisi Batas Periodik (Modulo %N)
+    tetangga = grid[(i+1)%N, j] + grid[(i-1)%N, j] + grid[i, (j+1)%N] + grid[i, (j-1)%N]
+    delta_E = 2 * s * tetangga
+
+    # Kriteria penerimaan Metropolis
+    if delta_E &lt; 0:
+        s *= -1 
+    elif np.random.rand() &lt; np.exp(-delta_E / T):
+        s *= -1 
+
+    grid[i, j] = s 
+
+    # Catat rata-rata magnetisasi setiap 100 langkah
+    if step % 100 == 0:
+        mag_history.append(np.sum(grid) / (N**2))
+
+# ==========================================
+# 3. VISUALISASI HASIL
+# ==========================================
+fig, axes = plt.subplots(1, 2, figsize=(12, 5))
+
+# Plot 1: Keadaan Akhir Kisi
+axes[0].imshow(grid, cmap='binary', vmin=-1, vmax=1)
+axes[0].set_title(f"Final State at T = {T:.2f}")
+axes[0].set_xticks([])
+axes[0].set_yticks([])
+for spine in axes[0].spines.values():
+    spine.set_edgecolor('black')
+    spine.set_linewidth(2)
+
+# Plot 2: Riwayat Magnetisasi
+axes[1].plot(range(len(mag_history)), mag_history, color='tab:blue', linewidth=1.5)
+axes[1].set_title(f"Magnetization at T = {T:.2f}")
+axes[1].set_xlabel("Monte Carlo Steps (x100)")
+axes[1].set_ylabel("Average Magnetization")
+axes[1].set_ylim(-1.1, 1.1)
+
+plt.tight_layout()
+plt.show()
+</pre>
+            
+            <div class="image-box">
+                <div class="image-box-title">📈 Hasil Visualisasi Grafik Komputasi</div>
+                <img src="output_kasus1.png" alt="Grafik Output Kasus 1">
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🗣️ 4. Diskusi dan Interpretasi Fisis</h2>
+            <p>
+                Penggunaan skenario <em>Hot Start</em> (kondisi awal acak) memberikan gambaran proses fisis yang sangat menarik pada grafik keluaran. Pada awal iterasi (Monte Carlo Step rendah), nilai rata-rata magnetisasi sistem bernilai fluktuatif di sekitar angka 0.0. Hal ini disebabkan karena jumlah spin bernilai +1 dan -1 masih seimbang, saling meniadakan momen magnetik satu sama lain secara makroskopis.
+            </p>
+            <p>
+                Namun, seiring berjalannya iterasi komputasi, kurva riwayat magnetisasi akan memperlihatkan lonjakan tajam (eksponensial) menjauh dari angka nol menuju garis asimtot plateau di nilai <strong>+1.0 atau -1.0</strong>. Fenomena transisi dinamis ini membuktikan secara nyata terjadinya peristiwa <strong>Patahan Simetri Spontan</strong> (<i>Spontaneous Symmetry Breaking</i>). Walau peluang probabilitas arah atas dan bawah sama besar, sistem dipaksa memilih salah satu kutub fasa akibat interaksi penurunan energi yang konvergen pada suhu rendah.
+            </p>
+            <p>
+                Pada visualisasi final keadaan matriks grid (<i>Final State</i>), permukaan kisi akan tampak bersih didominasi oleh satu warna solid utuh (hitam penuh atau putih penuh). Ketiadaan gugusan pulau spin minoritas mengonfirmasi bahwa pada temperatur T = 1.0, material komputasi berhasil mempertahankan fase feromagnetik murni secara kohesif, kokoh, dan bebas dari amorfisasi termal.
+            </p>
+        </div>
+        
+        <div class="footer">© 2026 Proyek Fisika Komputasi - Tim Model Ising 2D</div>
+    </div>
+</body>
+</html>
