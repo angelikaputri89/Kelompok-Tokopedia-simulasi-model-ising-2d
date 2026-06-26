@@ -24,5 +24,14 @@ Program Python dalam proyek ini mengedepankan efisiensi komputasi dengan spesifi
 ## Akses Portofolio Web
 Visualisasi keadaan akhir kisi spin (peta warna biner) dan kurva riwayat magnetisasi untuk ketiga kasus dapat diakses melalui GitHub Pages dari branch main yang bersumber dari direktori `/docs`.
 
-## Deklarasi Penggunaan AI
+## Referensi dan Sumber Data
+Landau, D. P., dkk. A Guide to Monte Carlo Simulations in Statistical Physics (Bab 17.2: Aturan Implementasi).
+Rifani, Agus. Modul Pembelajaran: Simulasi Model Magnet dan Transisi Fasa.
+
+## Penggunaan AI
 Pada pengerjaan case-based ini, kami menggunakan Gemini PRO 3.1 untuk menyusun kerangka sintaksis algoritma Metropolis pada kode simulasi Python, mengoptimalkan format UI/UX untuk halaman web HTML, serta membantu merapikan susunan paragraf analisis fisis.
+
+## Penggunaan Aplikasi Lain
+Jupyter Software untuk menyediakan lingkungan eksekusi kode secara interaktif, penulisan analisis berbasis teks formal, dan penampilan visualisasi kurva magnetisasi secara inline.
+Visual Studio Code (VS Code) digunakan sebagai editor kode utama untuk menyusun, mengedit, dan merapikan struktur sintaks HTML dan CSS halaman web ini dengan lebih efisien.
+Google Colab dimanfaatkan sebagai platform komputasi berbasis cloud untuk menguji dan mengeksekusi algoritma simulasi Python secara cepat tanpa membebani kinerja memori perangkat lokal.
