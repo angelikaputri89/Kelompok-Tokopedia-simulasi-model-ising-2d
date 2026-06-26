@@ -91,7 +91,7 @@
             color: #555555;
         }
 
-        /* Perbaikan Tampilan Blok Kode: Menggunakan elemen Pre agar rapi turun ke bawah */
+        /* Tampilan Blok Kode yang Rapi Kebawah */
         pre {
             background: #282c34;
             color: #abb2bf;
@@ -104,10 +104,10 @@
             text-align: left;
             margin: 20px 0;
             border-left: 5px solid #ff6b8b;
-            white-space: pre; /* Memaksa penataan baris sesuai teks asli */
+            white-space: pre;
         }
 
-        /* Perbaikan Tempat Grafik Gambar */
+        /* Tampilan Gambar Grafik */
         .image-box {
             background: #ffffff;
             border: 2px solid #ffe3e8;
@@ -141,50 +141,50 @@
             padding-top: 20px;
         }
     </style>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/dist/browser.js"></script>
 </head>
 <body>
     <div class="container">
         <a href="index.html" class="back-btn">⬅️ Kembali ke Menu Utama</a>
         <br>
         <span class="header-badge">SIMULASI MODEL ISING 2D</span>
-        <h1>Kasus 1: Fase Feromagnetik ($T = 1.0$)</h1>
+        <h1>Kasus 1: Fase Feromagnetik (T = 1.0)</h1>
         
         <div class="section">
             <h2>🧲 1. Konteks Fisis</h2>
             <p>
-                Pada simulasi ini, sistem dikondisikan pada temperatur rendah yaitu $T = 1.0$. Nilai temperatur ini berada jauh di bawah nilai ambang batas kritis teoritis sistem Ising 2 Dimensi (Temperatur Kritis Onsager, $T_c \approx 2.269$). Berdasarkan prinsip mekanika statistik, jika parameter temperatur bernilai kecil, maka usikan atau fluktuasi termal acak ($k_B T$) tidak memiliki energi yang cukup untuk melawan gaya kopling pertukaran simetris antar-spin tetangga ($J$).
+                Pada simulasi ini, sistem dikondisikan pada temperatur rendah yaitu <b>T = 1.0</b>. Nilai temperatur ini berada jauh di bawah nilai ambang batas kritis teoritis sistem Ising 2 Dimensi (Temperatur Kritis Onsager, <b>Tc sekitar 2.269</b>). Berdasarkan prinsip mekanika statistik, jika parameter temperatur bernilai kecil, maka usikan atau fluktuasi termal acak (k<sub>B</sub>T) tidak memiliki energi yang cukup untuk melawan gaya kopling pertukaran simetris antar-spin tetangga (J).
             </p>
             <p>
-                Sistem cenderung meminimalkan nilai energi internalnya dengan cara menyelaraskan arah dipol magnetik lokal secara kolektif. Akibat kuatnya interaksi tatanan jarak jauh (*long-range order*) ini, material uji komputasi akan masuk dan menetap ke dalam <strong>Fase Feromagnetik</strong>, di mana seluruh domain magnetik mengunci orientasinya ke satu arah yang seragam.
+                Sistem cenderung meminimalkan nilai energi internalnya dengan cara menyelaraskan arah dipol magnetik lokal secara kolektif. Akibat kuatnya interaksi tatanan jarak jauh (<i>long-range order</i>) ini, material uji komputasi akan masuk dan menetap ke dalam <strong>Fase Feromagnetik</strong>, di mana seluruh domain magnetik mengunci orientasinya ke satu arah yang seragam.
             </p>
         </div>
 
         <div class="section">
             <h2>📐 2. Ekspektasi Matematis</h2>
             <p>
-                Melalui penurunan analitik eksak Onsager, kita dapat merumuskan parameter makroskopis sistem pada kondisi setimbang ($M$) tanpa intervensi medan magnet luar ($B=0$) sebagai berikut:
+                Melalui penurunan analitik eksak Onsager, kita dapat merumuskan parameter makroskopis sistem pada kondisi setimbang (M) tanpa intervensi medan magnet luar (B = 0) sebagai berikut:
             </p>
-            <p style="text-align: center;">
-                $$M(T) = \left[1 - \sinh^{-2}\left(\frac{2J}{k_B T}\right)\right]^{1/8}$$
-            </p>
+            
+            <div style="text-align: center; margin: 25px 0; font-family: 'Times New Roman', Times, serif; font-size: 22px; font-weight: bold; color: #ff5c8a; background: #fff0f3; padding: 15px; border-radius: 12px;">
+                M(T) = [ 1 - sinh<sup>-2</sup>( 2J / k<sub>B</sub>T ) ]<sup>1/8</sup>
+            </div>
+            
             <p>
-                Ketika nilai $T = 1.0$ dimasukkan ke dalam persamaan di atas, nilai pecahan di dalam kurung mendekati nilai nol, yang menghasilkan nilai mutlak rata-rata magnetisasi per spin mendekati angka sempurna, yaitu <strong>$|M| \approx 1$</strong>. 
+                Ketika nilai <b>T = 1.0</b> dimasukkan ke dalam persamaan di atas, nilai pecahan di dalam kurung mendekati nilai nol, yang menghasilkan nilai mutlak rata-rata magnetisasi per spin mendekati angka sempurna, yaitu <b>|M| mendekati 1</b>.
             </p>
             <ul class="styled-list">
-                <li><strong>Energi per Spin ($E$):</strong> Karena konfigurasi grid didominasi oleh spin yang searah (paralel), energi ikatan total sistem diprediksi akan mencapai limit batas bawah *ground-state* pada kisi persegi, yaitu $E \approx -2J$.</li>
-                <li><strong>Fluktuasi Termodinamika ($C_v$ dan $\chi$):</strong> Nilai kapasitas kalor serta kerentanan magnetik diekspektasikan melandai mendekati nol karena sistem tidak lagi berada di area transisi fase aktif, melainkan sudah mengunci posisinya pada satu fase tunggal yang stabil.</li>
+                <li><strong>Energi per Spin (E):</strong> Karena konfigurasi grid didominasi oleh spin yang searah (paralel), energi ikatan total sistem diprediksi akan mencapai limit batas bawah <i>ground-state</i> pada kisi persegi, yaitu <b>E mendekati -2J</b>.</li>
+                <li><strong>Fluktuasi Termodinamika (Cv dan Chi):</strong> Nilai kapasitas kalor serta kerentanan magnetik diekspektasikan melandai mendekati nol karena sistem tidak lagi berada di area transisi fase aktif, melainkan sudah mengunci posisinya pada satu fase tunggal yang stabil.</li>
             </ul>
         </div>
 
         <div class="section">
             <h2>💻 3. Implementasi Komputasi</h2>
             <p>
-                Simulasi ini diwujudkan lewat algoritma stokastik Markov Chain Monte Carlo (MCMC) berlandaskan kriteria penerimaan Metropolis. Sistem menggunakan parameter kisi berukuran $20 \times 20$ (total $400$ titik spin) dengan menerapkan aturan Kondisi Batas Periodik (*Periodic Boundary Conditions*) berbasis fungsi matematika modulo untuk mengeliminasi efek distorsi pada area batas tepi sistem.
+                Simulasi ini diwujudkan lewat algoritma stokastik Markov Chain Monte Carlo (MCMC) berlandaskan kriteria penerimaan Metropolis. Sistem menggunakan parameter kisi berukuran <b>20 x 20</b> (total 400 titik spin) dengan menerapkan aturan Kondisi Batas Periodik (<i>Periodic Boundary Conditions</i>) berbasis fungsi matematika modulo untuk mengeliminasi efek distorsi pada area batas tepi sistem.
             </p>
             <p>
-                Fitur utama dalam skrip ini adalah penggunaan metode <strong>Hot Start Initialization</strong>, di mana orientasi awal seluruh spin diacak secara acak seimbang antara $-1$ dan $+1$. Kondisi awal ini merepresentasikan sistem dengan nilai entropi maksimum (keadaan acak total). Sistem kemudian dipaksa berevolusi sejauh $200.000$ langkah komputasi untuk mencapai kestabilan termal.
+                Fitur utama dalam skrip ini adalah penggunaan metode <strong>Hot Start Initialization</strong>, di mana orientasi awal seluruh spin diacak secara acak seimbang antara -1 dan +1. Kondisi awal ini merepresentasikan sistem dengan nilai entropi maksimum (keadaan acak total). Sistem kemudian dipaksa berevolusi sejauh 200.000 langkah komputasi untuk mencapai kestabilan termal.
             </p>
 
             <h3 style="color: #ff6b8b; font-size: 15px; margin-bottom: 5px;">Sintaks Kode Python:</h3>
@@ -200,78 +200,4 @@ MCS = 200000          # Total langkah Monte Carlo
 T = 1.0               # SUHU SISTEM
 
 # Inisialisasi Hot Start (Spin acak -1 atau 1)
-grid = np.random.choice([-1, 1], size=(N, N))
-mag_history = []      # Array nilai magnetisasi
-
-# ==========================================
-# 2. ALGORITMA METROPOLIS
-# ==========================================
-for step in range(MCS):
-    i = np.random.randint(0, N)
-    j = np.random.randint(0, N)
-    s = grid[i, j]
-
-    # Kondisi Batas Periodik (Modulo %N)
-    tetangga = grid[(i+1)%N, j] + grid[(i-1)%N, j] + grid[i, (j+1)%N] + grid[i, (j-1)%N]
-    delta_E = 2 * s * tetangga
-
-    # Kriteria penerimaan Metropolis
-    if delta_E &lt; 0:
-        s *= -1 
-    elif np.random.rand() &lt; np.exp(-delta_E / T):
-        s *= -1 
-
-    grid[i, j] = s 
-
-    # Catat rata-rata magnetisasi setiap 100 langkah
-    if step % 100 == 0:
-        mag_history.append(np.sum(grid) / (N**2))
-
-# ==========================================
-# 3. VISUALISASI HASIL
-# ==========================================
-fig, axes = plt.subplots(1, 2, figsize=(12, 5))
-
-# Plot 1: Keadaan Akhir Kisi
-axes[0].imshow(grid, cmap='binary', vmin=-1, vmax=1)
-axes[0].set_title(f"Final State at T = {T:.2f}")
-axes[0].set_xticks([])
-axes[0].set_yticks([])
-for spine in axes[0].spines.values():
-    spine.set_edgecolor('black')
-    spine.set_linewidth(2)
-
-# Plot 2: Riwayat Magnetisasi
-axes[1].plot(range(len(mag_history)), mag_history, color='tab:blue', linewidth=1.5)
-axes[1].set_title(f"Magnetization at T = {T:.2f}")
-axes[1].set_xlabel("Monte Carlo Steps (x100)")
-axes[1].set_ylabel("Average Magnetization")
-axes[1].set_ylim(-1.1, 1.1)
-
-plt.tight_layout()
-plt.show()
-</pre>
-            
-            <div class="image-box">
-                <div class="image-box-title">📈 Hasil Visualisasi Grafik Komputasi</div>
-                <img src="output_kasus1.png" alt="Grafik Output Kasus 1">
-            </div>
-        </div>
-
-        <div class="section">
-            <h2>🗣️ 4. Diskusi dan Interpretasi Fisis</h2>
-            <p>
-                Penggunaan skenario <em>Hot Start</em> (kondisi awal acak) memberikan gambaran proses fisis yang sangat menarik pada grafik keluaran. Pada awal iterasi (Monte Carlo Step rendah), nilai rata-rata magnetisasi sistem bernilai fluktuatif di sekitar angka $0.0$. Hal ini disebabkan karena jumlah spin bernilai $+1$ dan $-1$ masih seimbang, saling meniadakan momen magnetik satu sama lain secara makroskopis.
-            </p>
-            <p>
-                Namun, seiring berjalannya iterasi komputasi, kurva riwayat magnetisasi akan memperlihatkan lonjakan tajam (eksponensial) menjauh dari angka nol menuju garis asimtot plateau di nilai <strong>$+1.0$ atau $-1.0$</strong>. Fenomena transisi dinamis ini membuktikan secara nyata terjadinya peristiwa <strong>Patahan Simetri Spontan</strong> (*Spontaneous Symmetry Breaking*). Walau peluang probabilitas arah atas dan bawah sama besar, sistem dipaksa memilih salah satu kutub fasa akibat interaksi penurunan energi yang konvergen pada suhu rendah.
-            </p>
-            <p>
-                Pada visualisasi final keadaan matriks grid (`Final State`), permukaan kisi akan tampak bersih didominasi oleh satu warna solid utuh (hitam penuh atau putih penuh). Ketiadaan gugusan pulau spin minoritas (*magnetic domains*) mengonfirmasi bahwa pada temperatur $T = 1.0$, material komputasi berhasil mempertahankan fase feromagnetik murni secara kohesif, kokoh, dan bebas dari amorfisasi termal.
-            </p>
-        </div>
-        
-        <div class="footer">© 2026 Proyek Fisika Komputasi - Tim Model Ising 2D</div>
-    </div>
-</body>
-</html>
+grid = np.random.choice([-1, 1], size=(
